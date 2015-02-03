@@ -20,6 +20,7 @@ executable yampa2048
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.7 && <4.8
+                     , random
                      , gloss
                      , Yampa
   hs-source-dirs:      src
