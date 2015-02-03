@@ -20,5 +20,7 @@ executable yampa2048
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.7 && <4.8
-  -- hs-source-dirs:      
+                     , gloss
+                     , Yampa
+  hs-source-dirs:      src
   default-language:    Haskell2010
