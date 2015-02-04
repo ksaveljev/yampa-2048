@@ -1,6 +1,5 @@
 module Types ( InputEvent
              , Tile(..)
-             , TileValue(..)
              , Row
              , Column
              , Board(..)
@@ -18,19 +17,14 @@ import qualified Graphics.Gloss.Interface.IO.Game as G
 -- between Gloss and Yampa.
 type InputEvent = G.Event
 
-data TileValue = Empty | Value Int deriving Eq
-
-data Tile = Tile { value :: TileValue
-                 , popInTime :: Int
-                 , popOutTime :: Int
-                 } deriving Eq
+data Tile = Number Int | Empty deriving Eq
 
 type Row = Int
 type Column = Int
 
-newtype Board = Board [[Tile]]
+newtype Board = Board [[Tile]] deriving Eq
 
-data GameStatus = GamePlaying
+data GameStatus = InProgress
                 | GameOver
                 deriving Eq
 
