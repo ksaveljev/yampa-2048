@@ -92,19 +92,19 @@ drawBoard gameState =
 tileColor :: Tile -> Color
 tileColor tile = case tile of
                    Number 2     -> makeColorI 238 228 218 255
-                   Number 4     -> makeColorI 238 228 218 255
-                   Number 8     -> makeColorI 238 228 218 255
-                   Number 16    -> makeColorI 238 228 218 255
-                   Number 32    -> makeColorI 238 228 218 255
-                   Number 64    -> makeColorI 238 228 218 255
-                   Number 128   -> makeColorI 238 228 218 255
-                   Number 256   -> makeColorI 238 228 218 255
-                   Number 512   -> makeColorI 238 228 218 255
-                   Number 1024  -> makeColorI 238 228 218 255
-                   Number 2048  -> makeColorI 238 228 218 255
-                   Number 4096  -> makeColorI 238 228 218 255
-                   Number 8192  -> makeColorI 238 228 218 255
-                   Number 16384 -> makeColorI 238 228 218 255
-                   Number 32768 -> makeColorI 238 228 218 255
-                   Number 65536 -> makeColorI 238 228 218 255
+                   Number 4     -> makeColorI 237 224 200 255
+                   Number 8     -> makeColorI 242 177 121 255
+                   Number 16    -> makeColorI 245 149 99 255
+                   Number 32    -> makeColorI 246 124 95 255
+                   Number 64    -> makeColorI 246 94 59 255
+                   Number 128   -> makeColorI 237 207 114 255
+                   Number 256   -> makeColorI 237 204 97 255
+                   Number 512   -> makeColorI 237 200 80 255
+                   Number 1024  -> makeColorI 237 197 63 255
+                   Number 2048  -> makeColorI 237 194 46 255
+                   Number 4096  -> makeColorI 237 194 46 255 -- TODO: needs appropriate color
+                   Number 8192  -> makeColorI 237 194 46 255 -- TODO: needs appropriate color
+                   Number 16384 -> makeColorI 237 194 46 255 -- TODO: needs appropriate color
+                   Number 32768 -> makeColorI 237 194 46 255 -- TODO: needs appropriate color
+                   Number 65536 -> makeColorI 237 194 46 255 -- TODO: needs appropriate color
                    _            -> makeColorI 238 228 218 90

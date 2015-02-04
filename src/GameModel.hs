@@ -35,7 +35,7 @@ intToTile n = case n of
 
 tilesWithCoordinates :: Board -> [(Tile, Row, Column)]
 tilesWithCoordinates (Board b) = concat
-                               $ zipWith (\columnIndex row -> fmap (\(tile, rowIndex) -> (tile, rowIndex, columnIndex)) row) [0..]
+                               $ zipWith (\rowIndex row -> fmap (\(tile, columnIndex) -> (tile, rowIndex, columnIndex)) row) [0..]
                                $ fmap (\row -> zip row [0..])
                                  b
 
