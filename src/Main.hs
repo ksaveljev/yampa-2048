@@ -5,6 +5,7 @@ import Graphics.Gloss.Interface.FRP.Yampa
 import FRP.Yampa (Event(..), SF, arr, tag, (>>>))
 
 import Types
+import GameModel
 import Game
 
 drawGame :: SF GameState Picture
