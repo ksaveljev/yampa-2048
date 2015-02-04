@@ -34,7 +34,7 @@ gameAlive g =
 -- and then restart the game
 restartGame :: StdGen -> GameState -> SF GameInput GameState
 restartGame g s = switch
-  (gameOver s &&& after 3 ())
+  (gameOver s &&& after 5 ())
   (const $ wholeGame g)
 
 -- | When we have lost the game we want to keep the board in a state that
