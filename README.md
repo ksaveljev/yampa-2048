@@ -32,7 +32,7 @@ The gameplay is pretty simple. Nothing fancy. Try to survive for as long as
 possible.
 
 Things I would like to change but probably won't:
-- Gloss lacks the ability to style the font, therefore those number don't look
+- Gloss lacks the ability to style the font, therefore those numbers don't look
   nice but as long as works it seems to be ok
 - I wanted the game to exit upon the Esc button press but didn't bother to
   investigate why it is not closing or how to do it
