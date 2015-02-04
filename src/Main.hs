@@ -5,11 +5,8 @@ import Graphics.Gloss.Interface.FRP.Yampa
 import FRP.Yampa (Event(..), SF, arr, tag, (>>>))
 
 import Types
-import GameModel
 import Game
-
-drawGame :: SF GameState Picture
-drawGame = undefined
+import Rendering
 
 parseInput :: SF (Event InputEvent) GameInput
 parseInput = arr $ \event ->
@@ -19,6 +16,9 @@ parseInput = arr $ \event ->
     Event (G.EventKey (G.SpecialKey G.KeyLeft) G.Down _ _) -> event `tag` Types.Left
     Event (G.EventKey (G.SpecialKey G.KeyRight) G.Down _ _) -> event `tag` Types.Right
     _ -> event `tag` None
+
+drawGame :: SF GameState Picture
+drawGame = arr drawBoard
 
 mainSF :: StdGen -> SF (Event InputEvent) Picture
 mainSF g = parseInput >>> wholeGame g >>> drawGame

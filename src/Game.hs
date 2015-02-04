@@ -11,7 +11,7 @@ import GameLogic
 
 wholeGame :: StdGen -> SF GameInput GameState
 wholeGame g = switch
-  (gameAlive g >>> (arr id &&& outOfMoves))
+  (gameAlive g >>> (identity &&& outOfMoves))
   (restartGame g)
 
 outOfMoves :: SF GameState (Event GameState)
@@ -21,7 +21,14 @@ outOfMoves = proc s -> do
   returnA -< snapshot
 
 gameAlive :: StdGen -> SF GameInput GameState
-gameAlive g = runGame (initialGameState g)
+gameAlive g = 
+    let (float1, g') = random g
+        (float2, g'') = random g'
+        (float3, g''') = random g''
+        (float4, g'''') = random g'''
+    in runGame $ placeRandomTile float1 float2
+               $ placeRandomTile float3 float4
+                 (initialGameState g'''')
 
 -- | When the game is lost we want to show the GameOver text for some time
 -- and then restart the game
@@ -37,7 +44,7 @@ gameOver s = arr $ const $ s { status = GameOver }
 
 runGame :: GameState -> SF GameInput GameState
 runGame state = proc input -> do
-  rec currentState <- hold state -< gameUpdated
+  rec currentState <- dHold state -< gameUpdated
       gameUpdated <- arr update -< (currentState, input)
 
   returnA -< currentState
@@ -45,6 +52,7 @@ runGame state = proc input -> do
 update :: (GameState, GameInput) -> Event GameState
 update (gameState, input) =
     case input of
+      Event None -> NoEvent
       Event direction ->
         let newBoardScore = slideBoard direction (board gameState)
             (float1, gen') = random (gen gameState)

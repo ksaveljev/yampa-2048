@@ -3,7 +3,7 @@ module GameLogic ( placeRandomTile
                  , isGameOver
                  ) where
 
-import Prelude ((==), (/=), (>), (*), (<), fromIntegral, floor, fst, snd, ($), Float, Int, Bool, Eq)
+import Prelude ((==), (/=), (>), (*), (<), fromIntegral, floor, fst, snd, ($), Float, Int, Bool, Eq, error)
 import Data.List (and, length, sum, filter, concat, (++), replicate, take, (!!))
 import Data.Maybe (Maybe(..), isNothing, fromMaybe)
 import Data.Functor (fmap)
@@ -60,7 +60,8 @@ slideBoard direction b =
                           Down -> rotateBoard
                           Right -> rotateBoard . rotateBoard
                           Up -> rotateBoard . rotateBoard . rotateBoard
-                          _ -> id) b
+                          Left -> id
+                          _ -> error "unexpected direction") b
 
         rowsWithScores = slideRow <$> (\(Board x) -> x) rotatedBoard
 
@@ -71,7 +72,8 @@ slideBoard direction b =
                        Up -> rotateBoard
                        Right -> rotateBoard . rotateBoard
                        Down -> rotateBoard . rotateBoard . rotateBoard
-                       _ -> id) slidRotatedBoard
+                       Left -> id
+                       _ -> error "unexpected direction") slidRotatedBoard
 
     in (slidBoard, scoreGained)
 
