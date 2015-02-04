@@ -1,5 +1,4 @@
-# yampa-2048
-2048 game clone using Yampa FRP library
+# 2048 game clone using Yampa FRP library
 
 After trying to grasp the idea of FRP (mostly concentrating on Yampa library) I
 have finally found myself understanding it enough to write something simple.
