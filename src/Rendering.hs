@@ -74,6 +74,9 @@ gameOverMessage = pictures [ translate (-500) (-500) $ color translucentWhite $ 
                            ]
   where translucentWhite = makeColorI 255 255 255 150
 
+-- | Draw current board representation depending on the status of the game.
+-- All tiles will be drawn at all tiles and game over message is drawn onto
+-- the game board when game status is GameOver
 drawBoard :: GameState -> Picture
 drawBoard gameState =
     let (Board b) = board gameState
@@ -88,7 +91,9 @@ drawBoard gameState =
        ] ++ gameOverPicture
   where gameOverPicture = [gameOverMessage | status gameState == GameOver]
 
-
+-- | Tile colors up to tile with value 2048 taken directly from the
+-- original game. The rest of the numbers should be assigned some good
+-- values (well we can easily reach tile 4096 and some AI reach 32768)
 tileColor :: Tile -> Color
 tileColor tile = case tile of
                    Number 2     -> makeColorI 238 228 218 255
